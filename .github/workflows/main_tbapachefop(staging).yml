@@ -23,14 +23,14 @@ jobs:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
 
+    - name: Install azure-functions-core-tools
+      run: npm install -g azure-functions-core-tools@4 --unsafe-perm true
+              
     - name: Setup Java Sdk ${{ env.JAVA_VERSION }}
       uses: actions/setup-java@v1
       with:
         java-version: ${{ env.JAVA_VERSION }}
 
-    - name: Install azure-functions-core-tools
-      run: npm install -g azure-functions-core-tools@3 --unsafe-perm true
-              
     - name: 'Restore Project Dependencies Using Mvn'
       shell: pwsh
       run: |
