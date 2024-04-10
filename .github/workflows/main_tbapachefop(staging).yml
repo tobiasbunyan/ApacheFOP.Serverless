@@ -28,6 +28,12 @@ jobs:
       with:
         java-version: ${{ env.JAVA_VERSION }}
 
+    - name: Install npm
+      run: npm install
+
+    - name: Install azure-functions-core-tools
+      run: npm install -g azure-functions-core-tools@3 --unsafe-perm true
+              
     - name: 'Restore Project Dependencies Using Mvn'
       shell: pwsh
       run: |
@@ -35,12 +41,6 @@ jobs:
         mvn clean package
         popd
     
-    - name: Install npm
-      run: npm install
-
-    - name: Install azure-functions-core-tools
-      run: npm install -g azure-functions-core-tools@3 --unsafe-perm true
-              
     - name: 'Run Azure Functions Action'
       uses: Azure/functions-action@v1
       id: fa
