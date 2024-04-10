@@ -28,9 +28,6 @@ jobs:
       with:
         java-version: ${{ env.JAVA_VERSION }}
 
-    - name: Install npm
-      run: npm install
-
     - name: Install azure-functions-core-tools
       run: npm install -g azure-functions-core-tools@3 --unsafe-perm true
               
